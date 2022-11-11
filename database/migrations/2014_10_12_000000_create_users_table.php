@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            // TODO - relaciok
+            //$table->foreign('comment_id')->references('id')->on('comments');
         });
     }
 

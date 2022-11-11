@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('text');
             $table->timestamps();
+
+            // TODO - relaciok
+            //$table->foreign('user_id')->references('id')->on('user');
+            //$table->foreign('item_id')->references('id')->on('item');
         });
     }
 

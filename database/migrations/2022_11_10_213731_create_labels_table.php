@@ -19,6 +19,9 @@ return new class extends Migration
             $table->boolean('display');
             $table->string('color');
             $table->timestamps();
+
+            // TODO - relaciok
+            //$table->foreign('item_id')->references('id')->on('items');
         });
     }
 

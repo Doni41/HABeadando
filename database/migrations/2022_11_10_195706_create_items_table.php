@@ -20,6 +20,10 @@ return new class extends Migration
             $table->date('obtained');
             $table->string('image')->nullable();
             $table->timestamps();
+
+            // TODO - relaciok
+            //$table->foreign('comment_id')->references('id')->on('comments');
+            //$table->foreign('label_id')->references('id')->on('labels');
         });
     }
 
