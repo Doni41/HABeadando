@@ -15,7 +15,7 @@ class ItemController extends Controller
     {
         return view('items.index', [
             // pagination - lapozhatosag megvalositasa
-            'items' => \App\Models\Item::orderBy('obtained')->paginate(3)
+            'items' => \App\Models\Item::orderBy('obtained')->paginate(5)
             
         ]);
     }
@@ -49,7 +49,9 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('items.show', [
+            'item' => \App\Models\Item::findOrFail($id)
+        ]);
     }
 
     /**

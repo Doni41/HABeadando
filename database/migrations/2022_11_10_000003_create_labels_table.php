@@ -21,7 +21,8 @@ return new class extends Migration
             $table->timestamps();
 
             // TODO - relaciok
-            //$table->foreign('item_id')->references('id')->on('items');
+            $table->unsignedBigInteger('item_id')->nullable();
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');;
         });
     }
 

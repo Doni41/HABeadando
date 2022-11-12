@@ -20,7 +20,7 @@ class ItemFactory extends Factory
             'name' => fake()->text(30),
             'description' => fake()->text(100),
             'obtained' => fake()->date(),
-            'image' => fake()->text(40),
+            'image' => fake()->text(40)
         ];
     }
 }

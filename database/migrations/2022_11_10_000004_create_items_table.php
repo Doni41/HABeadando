@@ -13,6 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
+
+        //Schema::disableForeignKeyConstraints();
+
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -20,10 +23,12 @@ return new class extends Migration
             $table->date('obtained');
             $table->string('image')->nullable();
             $table->timestamps();
-
+            
             // TODO - relaciok
-            //$table->foreign('comment_id')->references('id')->on('comments');
-            //$table->foreign('label_id')->references('id')->on('labels');
+            $table->unsignedBigInteger('comment_id')->nullable();
+            $table->unsignedBigInteger('label_id')->nullable();
+            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
+            $table->foreign('label_id')->references('id')->on('labels')->onDelete('cascade');
         });
     }
 

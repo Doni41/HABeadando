@@ -25,9 +25,9 @@
     @if (Session::has('login_required'))
     <div class="alert alert-danger">
         <!-- Login required for that action! -->
+        <!-- login_required -->
     </div>
     @endif
-    login_required
     @if (Session::has('category_deleted'))
     <div class="alert alert-success">
         Category successfully deleted!
@@ -43,14 +43,14 @@
         <div class="col-12 col-lg-9">
             <div class="row">
                 @forelse ($items as $item)
-                    <div class="col-12 col-md-6 col-lg-4 mb-3 d-flex align-self-stretch">
+                    <div class="col-12 col-md-6 col-lg-4 mb-3 d-flex align-self-stretch text-center">
                         <div class="card w-100">
                             <img
                                 src="{{-- asset($items->image) --}}"
                                 class="card-img-top"
                                 alt="Post cover"
                             >
-                            <div class="card-body">
+                            <div class="card-body align-self-center">
                                 <h5 class="card-title mb-0">{{ $item->name }}</h5>
                                 <p class="small mb-0">
                                     <span class="me-2">
@@ -70,11 +70,11 @@
                                     </a>
                                 {{-- @endforeach --}} -->
 
-                                <p class="card-text mt-1">{{ $item->description }}</p>
+                                <p class="card-text justify mt-1">{{ substr($item->description, 0, 20) }}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="{{-- route('item.show', $item->id) --}}" class="btn btn-primary">
-                                    <span>View post</span> <i class="fas fa-angle-right"></i>
+                                <a href="{{ route('items.show', $item->id) }}" class="btn btn-primary">
+                                    <span>Tárgy megnézése</span> <i class="fas fa-angle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                 @empty
                     <div class="col-12">
                         <div class="alert alert-warning" role="alert">
-                            No posts found!
+                            Nem található tárgy!
                         </div>
                     </div>
                 @endforelse

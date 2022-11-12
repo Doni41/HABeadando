@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             User::factory()->create([
                 'email' => 'admin@szerveroldali.hu',
                 'password' => 'adminpwd',
+                'is_admin' => 1,
             ])
         );
 
@@ -38,21 +39,33 @@ class DatabaseSeeder extends Seeder
         }
 
         $items = Item::factory(10)->create();
-
+        
         $comments = Comment::factory(10)->create();
         
         $labels = Label::factory(10)->create();
-
+        
+        
         // TODO:  Relaciok a db-ben 
+        
+        //$items = Item::factory(10)->create()->each(function($items) use (&$comments, &$labels) {
+            //$item['comment_id'] = $comments->random()->save();
+            //$item->comments();
+            // $item->comments()->associate($comments->random())->save();
 
+            // $item->labels()->associate($labels->random())->save();
+        //});
         
         /*
         $items->each(function ($item) use (&$comments, &$labels) {
-            $item->comments()->associate($comments->random())->save();
+            // $item->comments()->associate($comments->random())->save();
 
-            $item->labels()->associate($labels->random())->save();
+            // $item->labels()->associate($labels->random())->save();
+            // $item->comments()->saveMany($comments->random())->create();
         });
         */
+        
+        
+        
 
         //$items[1]->comments()->save($comments[0]);
 

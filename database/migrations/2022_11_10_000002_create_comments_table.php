@@ -19,8 +19,10 @@ return new class extends Migration
             $table->timestamps();
 
             // TODO - relaciok
-            //$table->foreign('user_id')->references('id')->on('user');
-            //$table->foreign('item_id')->references('id')->on('item');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('item_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');;
         });
     }
 

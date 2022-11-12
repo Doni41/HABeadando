@@ -24,7 +24,8 @@ return new class extends Migration
             $table->timestamps();
 
             // TODO - relaciok
-            //$table->foreign('comment_id')->references('id')->on('comments');
+            $table->unsignedBigInteger('comment_id')->nullable();
+            $table->foreign('comment_id')->references('id')->on('comments');
         });
     }
 
