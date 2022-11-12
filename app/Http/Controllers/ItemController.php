@@ -15,7 +15,8 @@ class ItemController extends Controller
     {
         return view('items.index', [
             // pagination - lapozhatosag megvalositasa
-            'items' => \App\Models\Item::paginate(3)
+            'items' => \App\Models\Item::orderBy('obtained')->paginate(3)
+            
         ]);
     }
 

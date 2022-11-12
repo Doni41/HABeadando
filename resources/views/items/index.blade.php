@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-between">
         <div class="col-12 col-md-8">
-            <h1>All items</h1>
+            <h1>Teljes kínálat</h1>
         </div>
         @auth
         <div class="col-12 col-md-4">
@@ -24,7 +24,7 @@
     {{-- TODO: Session flashes --}}
     @if (Session::has('login_required'))
     <div class="alert alert-danger">
-        Login required for that action!
+        <!-- Login required for that action! -->
     </div>
     @endif
     login_required
@@ -51,7 +51,7 @@
                                 alt="Post cover"
                             >
                             <div class="card-body">
-                                <h5 class="card-title mb-0">{{ $item->nanme }}</h5>
+                                <h5 class="card-title mb-0">{{ $item->name }}</h5>
                                 <p class="small mb-0">
                                     <span class="me-2">
                                         <i class="fas fa-user"></i>
