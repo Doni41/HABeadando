@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('labels', function (Blueprint $table) {
+        Schema::create('item_label', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('display');
-            $table->string('color');
+            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('label_id');
             $table->timestamps();
-
-            // Relaciok - felesleges
-            // $table->unsignedBigInteger('item_id')->nullable();
-            // $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');;
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('labels');
+        Schema::dropIfExists('item_label');
     }
 };

@@ -23,9 +23,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            // TODO - relaciok
-            $table->unsignedBigInteger('comment_id')->nullable();
-            $table->foreign('comment_id')->references('id')->on('comments');
+            // Relaciok - felesleges
+            // $table->unsignedBigInteger('comment_id')->nullable();
+            // $table->foreign('comment_id')->references('id')->on('comments');
         });
     }
 

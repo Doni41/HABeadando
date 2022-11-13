@@ -24,11 +24,11 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->timestamps();
             
-            // TODO - relaciok
-            $table->unsignedBigInteger('comment_id')->nullable();
-            $table->unsignedBigInteger('label_id')->nullable();
-            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
-            $table->foreign('label_id')->references('id')->on('labels')->onDelete('cascade');
+            // Relaciok - felesleges
+            // $table->unsignedBigInteger('comment_id')->nullable();
+            // $table->unsignedBigInteger('label_id')->nullable();
+            // $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
+            // $table->foreign('label_id')->references('id')->on('labels')->onDelete('cascade');
         });
     }
 

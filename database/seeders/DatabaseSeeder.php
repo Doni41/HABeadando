@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
 
         $items = Item::factory(10)->create();
         
-        $comments = Comment::factory(10)->create();
+        $comments = Comment::factory(20)->create();
         
         $labels = Label::factory(10)->create();
         
@@ -63,28 +63,5 @@ class DatabaseSeeder extends Seeder
             // $item->comments()->saveMany($comments->random())->create();
         });
         */
-        
-        
-        
-
-        //$items[1]->comments()->save($comments[0]);
-
-        /*
-        for ($i = 1; $i < 11; $i++) {
-            $items['comment_id'] = $items[$i]->comments()->save($comments[$i]);
-            $items['label_id'] = $items[$i]->labels()->save($labels[$i]);
-        }
-        */
-        
-
-        //\App\Models\User::factory(10)->create()
-        //\App\Models\Item::factory(10)->create();
-        //\App\Models\Comment::factory(10)->create();
-        //\App\Models\Label::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
