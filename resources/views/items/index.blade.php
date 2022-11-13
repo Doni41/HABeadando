@@ -46,7 +46,7 @@
                     <div class="col-12 col-md-6 col-lg-4 mb-3 d-flex align-self-stretch text-center">
                         <div class="card w-100">
                             <img
-                                src="{{-- asset($items->image) --}}"
+                                src="{{ asset($item->image) }}"
                                 class="card-img-top"
                                 alt="Post cover"
                             >

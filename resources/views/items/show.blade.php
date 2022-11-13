@@ -3,26 +3,39 @@
 
 @section('content')
 <div class="container">
+    <a href="{{ route('items.index') }}"><i class="fas fa-long-arrow-alt-left"></i> Vissza a kezdőlapra</a>
 
     {{-- TODO: Session flashes --}}
 
     <div class="row justify-content-between">
         <div class="col-12 col-md-8">
-            <h1>{{ $item->name }}</h1>
+            <h1 class="text-uppercase">{{ $item->name }}</h1>
 
-            <p class="small text-secondary mb-0">
+            <p class="small text-secondary mb-2 font-weight-normal">
                 <i class="fas fa-user"></i>
-                <span>By {{-- $post->user->name --}}</span>
+                <span>Tárgy megszerzésének ideje: {{ $item->obtained }}</span>
             </p>
-            <p class="small text-secondary mb-0">
-                <i class="far fa-calendar-alt"></i>
-                <span>{{ $item->obatained }}</span>
+            <img id="cover_preview_image" src="{{ asset($item->image) }}" alt="Cover preview" class="my-3 mb-4">
+            <p class="small text-muted mb-4">
+                <i class="far fa-calendar-alt">
+                    <span class="font-italic">{{ $item->description }}</span>
+                </i>
             </p>
+            <div class="row d-flex justify-content-between">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                        <div class="card-body p-4">
+                            <div class="form-outline mb-4">
+                                <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+                                <label class="form-label" for="addANote">+ Add a note</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="mb-2">
             </div>
-
-            <a href="{{ route('items.index') }}"><i class="fas fa-long-arrow-alt-left"></i> Vissza a kezdőlapra</a>
 
         </div>
 
@@ -33,7 +46,7 @@
                 <a role="button" class="btn btn-sm btn-primary" href="{{ route('items.edit', $item->id) }}"><i class="far fa-edit"></i> Tárgy szerkesztése</a>
 
                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-confirm-modal"><i class="far fa-trash-alt">
-                    <span></i> Tárgy törlése</span>
+                        <span></i> Tárgy törlése</span>
                 </button>
 
             </div>
@@ -53,11 +66,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button
-                        type="button"
-                        class="btn btn-danger"
-                        onclick="document.getElementById('delete-post-form').submit();"
-                    >
+                    <button type="button" class="btn btn-danger" onclick="document.getElementById('delete-post-form').submit();">
                         Yes, delete this post
                     </button>
 
@@ -70,18 +79,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <img
-        id="cover_preview_image"
-        {{-- TODO: Cover --}}
-        src="{{ asset('images/default_post_cover.jpg') }}"
-        alt="Cover preview"
-        class="my-3"
-    >
-
-    <div class="mt-3">
-        {{ $item->description }}
     </div>
 </div>
 @endsection
