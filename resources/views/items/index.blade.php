@@ -8,32 +8,30 @@
             <h1>Teljes kínálat</h1>
         </div>
         @auth
-        <div class="col-12 col-md-4">
-            <div class="float-lg-end">
-                {{-- TODO: Links, policy --}}
-
-                <!-- <a href="{{ route('items.create') }}" role="button" class="btn btn-sm btn-success mb-1"><i class="fas fa-plus-circle"></i> Create post</a>
-
-                <a href="{{ route('item.create') }}" role="button" class="btn btn-sm btn-success mb-1"><i class="fas fa-plus-circle"></i> Create category</a> -->
-
+        @if (\Auth::user()->is_admin)
+            <div class="col-12 col-md-4">
+                <div class="float-lg-end">
+                    {{-- TODO: Links, policy --}}
+                    <a href="{{ route('items.create') }}" role="button" class="btn btn-sm btn-success mb-1"><i class="fas fa-plus-circle"></i>Új tárgy felvétele</a>
+                    <a href="{{ route('labels.create') }}" role="button" class="btn btn-sm btn-success mb-1"><i class="fas fa-plus-circle"></i>Új kategória felvétele</a>
+                </div>
             </div>
-        </div>
+        @endif
         @endauth
     </div>
 
     {{-- TODO: Session flashes --}}
     @if (Session::has('login_required'))
     <div class="alert alert-danger">
-        <!-- Login required for that action! -->
-        <!-- login_required -->
+        Az új kategória felvételéhez be kell jelentkeznie!
     </div>
     @endif
-    @if (Session::has('category_deleted'))
+    @if (Session::has('label_deleted'))
     <div class="alert alert-success">
         Category successfully deleted!
     </div>
     @endif
-    @if (Session::has('post_deleted'))
+    @if (Session::has('item_deleted'))
     <div class="alert alert-success">
         Post successfully deleted!
     </div>
@@ -99,34 +97,31 @@
                 <div class="col-12 mb-3">
                     <div class="card bg-light">
                         <div class="card-header">
-                            Categories
+                            Címkék
                         </div>
-                        <!-- <div class="card-body">
-                            {{-- @foreach ($categories as $category) --}
-                                <a href="{{-- route('categories.show', $category->id) --}}" class="text-decoration-none">
-                                    <span class="badge" style="background-color: {{-- $category->color --}}">{{-- $category->name --}}</span>
+                        <div class="card-body">
+                            @foreach ($labels as $label)
+                                <a class="text-decoration-none">
+                                    <span class="badge" style="background-color: {{ $label->color }}">{{ $label->name }}</span>
                                 </a>
-                            {{-- @endforeach --]
-                        </div> -->
+                            @endforeach
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-12 mb-3">
+                <!-- <div class="col-12 mb-3">
                     <div class="card bg-light">
-                        <div class="card-header">
-                            Statistics
-                        </div>
                         <div class="card-body">
-                            <!-- <div class="small">
+                            <div class="small">
                                 <ul class="fa-ul">
                                     <li><span class="fa-li"><i class="fas fa-user"></i></span>Users: {{-- $user_count --}}</li>
                                     <li><span class="fa-li"><i class="fas fa-layer-group"></i></span>Categories: {{-- $categories->count() --}}</li>
                                     <li><span class="fa-li"><i class="fas fa-file-alt"></i></span>Posts: {{-- $posts->count() --}}</li>
                                 </ul>
-                            </div> -->
-                        </div>
+                            </div>
+                        </div> 
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>

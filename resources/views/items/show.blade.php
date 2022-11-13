@@ -21,10 +21,38 @@
                     <span class="font-italic">{{ $item->description }}</span>
                 </i>
             </p>
+            <div class="mb-2">
+                @foreach ($item->labels as $label)
+                    <a href="#" class="text-decoration-none">
+                        @if ($label->display)
+                            <span class="badge" style="background-color: {{ $label->color }}">{{ $label->name }}</span>
+                        @endif
+                    </a>
+                @endforeach
+            </div>
             <div class="row d-flex justify-content-between">
                 <div class="col-md-8 col-lg-6">
                     <div class="card shadow-0 border" style="background-color: #f0f2f5;">
                         <div class="card-body p-4">
+                            @foreach ($item->comments->sortBy('created_at') as $comment)
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p>{{ $comment->text }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+                                            height="25" />
+                                            <p class="small mb-0 ms-2">{{ $comment->user->name }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center mx-3 mb-2">
+                                    <p class="small text-muted mb-0">Komment időpontja: {{ $comment->created_at }}</p>
+                                    <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                                    <p class="small text-muted mb-0"></p>
+                                </div>
+                            </div>
+                            @endforeach
                             <div class="form-outline mb-4">
                                 <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
                                 <label class="form-label" for="addANote">+ Add a note</label>

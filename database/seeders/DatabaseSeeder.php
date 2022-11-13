@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $users->add(
             User::factory()->create([
                 'email' => 'admin@szerveroldali.hu',
-                'password' => 'adminpwd',
+                'password' => '$2y$10$o.eZz9WsTP0rWHVB9BhgMOnqMuvhseH9v/Vcp/IGe/ak0VnxWcO8y', //adminpwd
                 'is_admin' => 1,
             ])
         );

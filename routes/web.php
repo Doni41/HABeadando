@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LabelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::get('/home', function () {
 });
 
 Route::resource('items', ItemController::class);
+Route::resource('labels', LabelController::class);
 
 Auth::routes();
 
