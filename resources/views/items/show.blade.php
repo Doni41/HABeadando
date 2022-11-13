@@ -25,7 +25,9 @@
                 @foreach ($item->labels as $label)
                     <a href="#" class="text-decoration-none">
                         @if ($label->display)
-                            <span class="badge" style="background-color: {{ $label->color }}">{{ $label->name }}</span>
+                        <a class="" href="{{ route('labels.show', $label->id) }}">
+                            <span class="mb-4 badge" style="background-color: {{ $label->color }}">{{ $label->name }}</span>
+                        </a>
                         @endif
                     </a>
                 @endforeach

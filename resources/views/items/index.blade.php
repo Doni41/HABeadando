@@ -28,12 +28,12 @@
     @endif
     @if (Session::has('label_deleted'))
     <div class="alert alert-success">
-        Category successfully deleted!
+        A címke sikeresen törölve lett
     </div>
     @endif
     @if (Session::has('item_deleted'))
     <div class="alert alert-success">
-        Post successfully deleted!
+        A tárgy sikeresen törölve lett
     </div>
     @endif
 
@@ -53,7 +53,7 @@
                                 <p class="small mb-0">
                                     <span class="me-2">
                                         <i class="fas fa-user"></i>
-                                        <!-- <span>By {{-- $post->user->name --}}</span> -->
+                                        <!-- <span>By {{-- $item->user->name --}}</span> -->
                                     </span>
 
                                     <span>
@@ -61,13 +61,6 @@
                                         <span>{{ $item->obtained }}</span>
                                     </span>
                                 </p>
-<!-- {{--
-                                @foreach ($post->categories as $category) --}}
-                                    <a href="/categories/{{-- $category->id --}}" class="text-decoration-none">
-                                        <span class="badge" style="background-color: {{-- $category->color --}};">{{-- $category->name --}}</span>
-                                    </a>
-                                {{-- @endforeach --}} -->
-
                                 <p class="card-text justify mt-1">{{ substr($item->description, 0, 20) }}</p>
                             </div>
                             <div class="card-footer">
@@ -87,7 +80,6 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                {{-- TODO: Pagination --}}
                 {{ $items->links() }}
             </div>
 
@@ -101,7 +93,7 @@
                         </div>
                         <div class="card-body">
                             @foreach ($labels as $label)
-                                <a class="text-decoration-none">
+                                <a class="text-decoration-none" href="{{ route('labels.show', $label->id) }}">
                                     <span class="badge" style="background-color: {{ $label->color }}">{{ $label->name }}</span>
                                 </a>
                             @endforeach

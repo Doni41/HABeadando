@@ -71,7 +71,9 @@ class LabelController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('labels.show', [
+            'label' => \App\Models\Label::findOrFail($id)
+        ]);
     }
 
     /**
@@ -82,7 +84,9 @@ class LabelController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('labels.edit', [
+            'label' => \App\Models\Label::find($id)
+        ]);
     }
 
     /**
@@ -94,7 +98,25 @@ class LabelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate(
+            [
+                'name' => 'required|max:32',
+                'color' => 'required|size:7',
+                'diplay' => '',
+            ],
+            [
+                'name.required' => 'Név megadása kötelező!',
+                'color.required' => 'A szín megadása kötelező!',
+                'color.size' => 'A színnek 7 hosszúnak kell lennie, és hexadecimális formában kell megadni!',
+            ]
+        );
+
+        $label = \App\Models\Label::find($id);
+        $label->update($validated);
+
+        Session::flash('label_updated');
+
+        return redirect()->route('labels.edit', ['label' => \App\Models\Label::find($id)]);
     }
 
     /**

@@ -9,6 +9,8 @@ class Label extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function items() {
         return $this->belongsToMany(Item::class);
     }
