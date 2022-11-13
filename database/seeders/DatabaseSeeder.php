@@ -46,22 +46,13 @@ class DatabaseSeeder extends Seeder
         
         
         // TODO:  Relaciok a db-ben 
-        
-        //$items = Item::factory(10)->create()->each(function($items) use (&$comments, &$labels) {
-            //$item['comment_id'] = $comments->random()->save();
-            //$item->comments();
-            // $item->comments()->associate($comments->random())->save();
 
-            // $item->labels()->associate($labels->random())->save();
-        //});
-        
-        /*
-        $items->each(function ($item) use (&$comments, &$labels) {
-            // $item->comments()->associate($comments->random())->save();
-
-            // $item->labels()->associate($labels->random())->save();
-            // $item->comments()->saveMany($comments->random())->create();
-        });
-        */
+        foreach($items as $item) {
+            $tmp_array = range(1, $labels->count());
+            shuffle($tmp_array);
+            for ($i = 0; $i < rand(1, $labels->count()); $i++) {
+                $item->labels()->attach(array_pop($tmp_array));
+            }
+        }
     }
 }
